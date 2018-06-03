@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- database connection properties -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/QuestLog?createDatabaseIfNotExist=true&amp;serverTimezone=Europe/Amsterdam</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL57InnoDBDialect</property>
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> -->
+
+
+
+		<!-- show mysql queries output in console -->
+		<property name="hibernate.show_sql">true</property>
+
+		<!-- manage automatic database creation -->
+		<!-- <property name="hibernate.hbm2ddl.auto">create</property> --> <!-- drops and re-creates tables -->
+		<property name="hibernate.hbm2ddl.auto">update</property> <!-- keeps data and updates where necessary -->
+
+
+		<!-- add annotated resources here -->
+		<mapping class="nl.delphinity.questlog.models.AbstractCharacterBase" />
+		<mapping class="nl.delphinity.questlog.models.CharacterBase" />
+		<mapping class="nl.delphinity.questlog.models.Item" />
+		<mapping class="nl.delphinity.questlog.models.PlayerCharacter" />
+		<mapping class="nl.delphinity.questlog.models.User" />
+		<mapping class="nl.delphinity.questlog.models.RolePlayer" />
+		<mapping class="nl.delphinity.questlog.models.Weapon" />
+		<mapping class="nl.delphinity.questlog.models.Trinket" />
+		<mapping class="nl.delphinity.questlog.models.Food" />
+		<mapping class="nl.delphinity.questlog.models.Armour" />
+		<mapping class="nl.delphinity.questlog.models.Currency" />
+
+
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+
+.wordBreak {
+	word-wrap: break-word;
+}
+
+.tableFixed {
+	 table-layout: fixed;
+}

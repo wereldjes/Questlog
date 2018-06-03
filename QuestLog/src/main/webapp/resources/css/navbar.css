@@ -1,0 +1,12 @@
+.dropdown-menu {
+	min-width: 100%;
+	text-align: center;
+}
+
+.dropdown-toggle {
+	margin-right: 15px;
+}
+
+.navbar {
+	border: none !important;
+}

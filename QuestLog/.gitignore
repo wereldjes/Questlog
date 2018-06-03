@@ -1,0 +1,30 @@
+#Ignore binaries:
+*.class
+
+#Ignore Jar files:
+*.jar
+*.war
+*.ear
+
+# Eclipse
+.metadata/
+RemoteSystemsTempFiles/*
+Server/*
+.recommenders/*
+Servers/*
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Maven
+target/*
+log/*
+*/target/
+
+#Classes in main package, so everyone can do what he wants without conflicts.
+src/main/java/nl/delphinity/questlog/main/
+bin/
+/target/
+src/main/resources/properties/mail.properties

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+						"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="Session" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor class="nl.delphinity.questlog.interceptor.LoginInterceptor"
+				name="LoginInterceptor">
+			</interceptor>
+			<interceptor-stack name="LoginStack">
+				<interceptor-ref name="LoginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="loadSession"
+			class="nl.delphinity.questlog.controllers.PlayerSessionController"
+			method="Execute">
+			<interceptor-ref name="LoginStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success">/WEB-INF/jsp/createSession.jsp</result>
+		</action>
+		<action name="createSession"
+			class="nl.delphinity.questlog.controllers.PlayerSessionController"
+			method="createSession">
+			<interceptor-ref name="LoginStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success">/WEB-INF/jsp/createSession.jsp</result>
+			<result name="success" type="redirectAction">loadSession</result>
+		</action>
+		<action name="deleteSession"
+			class="nl.delphinity.questlog.controllers.PlayerSessionController"
+			method="deleteSession">
+			<interceptor-ref name="LoginStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success">/WEB-INF/jsp/createSession.jsp</result>
+			<result name="success" type="redirectAction">loadSession</result>
+		</action>
+		<action name="updateSession"
+			class="nl.delphinity.questlog.controllers.PlayerSessionController"
+			method="updateSession">
+			<interceptor-ref name="LoginStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success">/WEB-INF/jsp/createSession.jsp</result>
+			<result name="success" type="redirectAction">loadSession</result>
+		</action>
+	</package>
+</struts>

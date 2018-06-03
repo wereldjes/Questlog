@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+						"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="account" namespace="/" extends="struts-default">
+		<action name="loadLogin"
+				class="nl.delphinity.questlog.controllers.AccountController"
+				method="Execute">
+			<interceptor-ref name="store">
+				<param name="operationMode">RETRIEVE</param>
+			</interceptor-ref>
+			<result name="success">/login.jsp</result>
+		</action>
+		<action name="createAccount"
+				class="nl.delphinity.questlog.controllers.AccountController"
+				method="createAccount">
+				<interceptor-ref name="store">
+					<param name="operationMode">STORE</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"/>
+			<result name="success">/login.jsp</result>
+			<result name="success" type="redirectAction">loadLogin</result>
+		</action>
+		<action name="activateAccount"
+				class="nl.delphinity.questlog.controllers.AccountController"
+				method="activateAccount">
+				<interceptor-ref name="store">
+					<param name="operationMode">STORE</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"/>
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success" type="redirectAction">loadLogin</result>
+		</action>
+		<action name="userLogin"
+				class="nl.delphinity.questlog.controllers.AccountController"
+				method="userLogin">
+				<interceptor-ref name="store">
+					<param name="operationMode">STORE</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"/>
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success">/jsp/homepage.jsp</result>
+		</action>
+		<action name="logOut"
+				class="nl.delphinity.questlog.controllers.AccountController"
+				method="logOut">
+			<result name="success" type="redirectAction">loadLogin</result>	
+		</action>
+		<action name="resetPasswordSetup"
+				class="nl.delphinity.questlog.controllers.AccountController"
+				method="resetPasswordSetup">
+				<interceptor-ref name="store">
+					<param name="operationMode">STORE</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"/>
+			<result name="success" type="redirectAction">loadLogin</result>
+		</action>
+		<action name="executeResetPassword"
+				class="nl.delphinity.questlog.controllers.AccountController"
+				method="executeResetPassword">
+			<result name="success">/jsp/resetPassword.jsp</result>
+		</action>
+		<action name="resetPassword"
+				class="nl.delphinity.questlog.controllers.AccountController"
+				method="resetPassword">
+				<interceptor-ref name="store">
+					<param name="operationMode">STORE</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"/>
+			<result name="success" type="redirectAction">loadLogin</result>
+		</action>
+		<action name="quickUser"
+				class="nl.delphinity.questlog.controllers.AccountController"
+				method="quickUser">
+			<result name="success">/jsp/homepage.jsp</result>
+		</action>
+	</package>
+</struts>

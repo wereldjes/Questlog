@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+						"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="Adventure" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor class="nl.delphinity.questlog.interceptor.LoginInterceptor"
+				name="LoginInterceptor">
+			</interceptor>
+			<interceptor-stack name="LoginStack">
+				<interceptor-ref name="LoginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="loadAdventure"
+			class="nl.delphinity.questlog.controllers.AdventureController"
+			method="execute">
+			<interceptor-ref name="LoginStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success">/jsp/createAdventure.jsp</result>
+		</action>
+		<action name="createAdventure"
+			class="nl.delphinity.questlog.controllers.AdventureController"
+			method="createAdventure">
+			<interceptor-ref name="LoginStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success">/jsp/createAdventure.jsp</result>
+			<result name="success" type="redirectAction">loadAdventure</result>
+		</action>
+		<action name="deleteAdventure"
+			class="nl.delphinity.questlog.controllers.AdventureController"
+			method="deleteAdventure">
+			<interceptor-ref name="LoginStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success">/jsp/createAdventure.jsp</result>
+			<result name="success" type="redirectAction">loadAdventure</result>
+		</action>
+		<action name="updateAdventure"
+			class="nl.delphinity.questlog.controllers.AdventureController"
+			method="updateAdventure">
+			<interceptor-ref name="LoginStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success">/jsp/createAdventure.jsp</result>
+			<result name="success" type="redirectAction">loadAdventure</result>
+		</action>
+	</package>
+</struts>

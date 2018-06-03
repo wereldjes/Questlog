@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+						"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true"/>
+
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- Interceptors -->
+		<interceptors>
+			<interceptor class="nl.delphinity.questlog.interceptor.LoginInterceptor" name="LoginInterceptor">
+			</interceptor>
+			<interceptor-stack name="LoginStack">
+				<interceptor-ref name="LoginInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="createUser"
+			class="nl.delphinity.questlog.controllers.UserController" method="execute">
+			<result name="success">index.jsp</result>
+		</action>
+
+		<action name="createNpc"
+			class="nl.delphinity.questlog.controllers.NpcController" method="execute">
+			<result name="success">/jsp/createNpc.jsp</result>
+		</action>
+	</package>
+	<include file="character/struts-characters.xml" />
+	<include file="account/struts-account.xml"/>
+	<include file="adventure/struts-adventure.xml" />
+	<include file="session/struts-session.xml" />
+	<include file="npc/struts-npc.xml" />
+
+</struts>
